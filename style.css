@@ -1,0 +1,150 @@
+:root {
+  --brand-blue: #1D5379;
+  --brand-gold: #AA8A00;
+  --brand-red: #E1251B;
+  --text: #164261;
+  --shadow: rgba(0, 0, 0, 0.3);
+  --border: rgba(255, 255, 255, 0.3);
+  --card-yellow: #FFFACD;
+  --card-blue: #E6F7FF;
+  --glow-gold: rgba(255, 215, 0, 0.45);
+  --glow-red: rgba(225, 37, 27, 0.4);
+  --parchment-grain: rgba(255, 255, 255, 0.15);
+  --sauce-color-start: #8B0000;
+  --sauce-color-end: #A52A2A;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { height:100%; font-family:'Montserrat',sans-serif; color:var(--text); overflow-x:hidden; scroll-behavior:smooth; }
+
+img { position:relative; z-index:9999; }
+
+.bg-gif {
+  position:fixed; top:0; left:0; width:100vw; height:100vh; z-index:-1;
+  background:url('https://login.skillizee.io/s/articles/690c73387224612f7491de92/images/Pasta%201.1.gif') center/cover no-repeat fixed;
+}
+
+header {
+  position:relative; text-align:center; padding:6rem 2rem 2rem; background:transparent; z-index:2;
+}
+.header-logo {
+  display:block; margin:0 auto 1rem; width:auto; height:80px;
+  filter:drop-shadow(0 4px 12px var(--shadow)); transition:transform .3s ease;
+}
+.header-logo:hover { transform:scale(1.05); }
+header .logo-title { font-size:3.4rem; font-weight:800; color:white; text-shadow:0 3px 10px var(--shadow); letter-spacing:-0.8px; margin-bottom:.6rem; }
+header .chapter { font-size:1.35rem; font-weight:600; color:#FFFBCC; letter-spacing:1.2px; text-shadow:0 2px 6px var(--shadow); }
+
+.container { max-width:800px; margin:0 auto; padding:0 2rem; position:relative; z-index:1; }
+.card { background:rgba(255,255,255,.96); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+        border:1px solid var(--border); border-radius:18px; overflow:hidden; margin:3.5rem auto;
+        box-shadow:0 16px 45px rgba(0,0,0,.22),0 8px 20px rgba(0,0,0,.12);
+        transition:all .4s cubic-bezier(.25,.8,.25,1); }
+.container .card:first-child { margin-top: 0.75rem; }
+.card:hover { transform:translateY(-14px) scale(1.04);
+              box-shadow:0 28px 70px rgba(0,0,0,.3),0 0 40px var(--glow-gold); z-index:20; }
+
+.heading-bar { background:linear-gradient(to right,var(--sauce-color-start),var(--sauce-color-end));
+               color:white; padding:1.5rem 2rem; font-weight:800; font-size:1.55rem;
+               text-align:center; letter-spacing:1.3px; position:relative; cursor:pointer;
+               text-transform:uppercase; border-radius:18px 18px 0 0; overflow:hidden;
+               box-shadow:0 4px 15px rgba(139,0,0,.3); }
+.heading-bar::after { content:''; position:absolute; bottom:0; left:50%; transform:translateX(-50%);
+                      width:85px; height:5px; background:var(--brand-gold); border-radius:3px;
+                      box-shadow:0 2px 8px rgba(170,138,0,.4); }
+.heading-bar:hover { animation:pulseGlow 2s infinite; }
+@keyframes pulseGlow { 0%,100%{box-shadow:0 4px 15px rgba(225,37,27,.4);}
+                       50%{box-shadow:0 4px 30px rgba(225,37,27,.7),0 0 25px var(--glow-red);} }
+
+.content { padding:0.2rem 2.8rem; color:var(--text); line-height:1.95; font-size:1.12rem;
+           position:relative; border-radius:0 0 18px 18px; background:var(--card-yellow); overflow:hidden; }
+.card:nth-child(1) .content { background:var(--card-yellow); }
+.card:nth-child(2) .content { background:var(--card-blue); }
+.card:nth-child(3) .content { background:var(--card-yellow); }
+.card:nth-child(4) .content { background:var(--card-blue); }
+.content::before { content:''; position:absolute; inset:0;
+                   background:repeating-linear-gradient(90deg,var(--parchment-grain) 0px,transparent 1px,transparent 8px,var(--parchment-grain) 9px),
+                               repeating-linear-gradient(0deg,var(--parchment-grain) 0px,transparent 1px,transparent 8px,var(--parchment-grain) 9px);
+                   opacity:.25; pointer-events:none; border-radius:0 0 18px 18px; mix-blend-mode:overlay; }
+.content p { margin:1.4rem 0; }
+.content strong { color:var(--brand-blue); font-weight:600; }
+
+.video-wrapper { position:relative; padding-bottom:56.25%; height:0; overflow:hidden;
+                 border-radius:14px; margin:2.6rem 0; box-shadow:0 14px 40px rgba(0,0,0,.2); }
+.video-wrapper iframe { position:absolute; top:0; left:0; width:100%; height:100%; border:none; border-radius:14px; }
+
+.content img { width:100%; max-width:100%; height:auto; border-radius:14px; margin:2.2rem 0;
+               object-fit:cover; box-shadow:0 8px 20px rgba(0,0,0,.14); transition:all .5s ease; }
+.content img:hover { transform:scale(1.07); box-shadow:0 20px 50px rgba(0,0,0,.32),0 0 38px var(--glow-gold); z-index:5; }
+
+.pasta-quiz { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin:2rem 0; padding:0 .5rem; }
+.flip-container { perspective:1000px; width:100%; height:220px; cursor:pointer; }
+.pasta-option {
+  width:100%; height:100%; transition:transform .6s; transform-style:preserve-3d;
+  position:relative; cursor:pointer; border-radius:16px; box-shadow:0 6px 18px rgba(0,0,0,.1);
+  backface-visibility:hidden; border:2px solid transparent;
+  background:linear-gradient(45deg,red,orange,yellow,green,blue,indigo,violet) border-box;
+  background-size:400% 400%; animation:rgbGlow 5s linear infinite;
+}
+@keyframes rgbGlow { 0%{background-position:0% 50%;} 50%{background-position:100% 50%;} 100%{background-position:0% 50%;} }
+.flip-container:hover .pasta-option { transform:rotateY(180deg); }
+.front,.back {
+  position:absolute; width:100%; height:100%; backface-visibility:hidden;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  border-radius:16px; background:white; padding:1.5rem; overflow:visible; word-break:break-word; hyphens:auto;
+}
+.back { transform:rotateY(180deg); background:#f8f8f8; text-align:center; }
+.pasta-option img { width:120px; height:120px; object-fit:contain; margin-bottom:.5rem;
+                    filter:drop-shadow(0 4px 8px rgba(0,0,0,.15)); border-radius:8px; background:#f9f9f9; padding:.3rem; }
+.pasta-option span { font-weight:600; color:var(--brand-blue); font-size:1rem; letter-spacing:.5px; text-transform:uppercase; }
+.back h4 { font-size:1.1rem; color:var(--brand-red); margin-bottom:.3rem; }
+.back p { font-size:.9rem; color:var(--brand-blue); padding:0 .5rem; }
+
+footer { text-align:center; padding:1.5rem 2rem; background:var(--brand-blue); color:white;
+         margin-top:2rem; z-index:1; font-size:.98rem; }
+
+#particle-container { position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9999; }
+
+#modal {
+  position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.7); z-index:10000;
+  display:none; align-items:center; justify-content:center;
+}
+.modal-content {
+  background:white; padding:2rem; border-radius:16px; box-shadow:0 0 20px rgba(0,0,0,0.5);
+  perspective:1000px; position:relative; max-width:80vw; max-height:80vh; overflow:auto;
+}
+.close-btn {
+  position:absolute; top:10px; right:10px; background:var(--brand-red); color:white;
+  border:none; font-size:1.5rem; cursor:pointer; padding:0.5rem 1rem; border-radius:50%;
+  transition:transform 0.3s;
+}
+.close-btn:hover { transform:rotate(90deg); }
+
+.three-d-container {
+  transform-style:preserve-3d; transition:transform 0.1s;
+  width:300px; height:300px; display:flex; flex-direction:column; align-items:center; justify-content:center;
+  margin:0 auto;
+}
+.three-d-img {
+  width:200px; height:200px; object-fit:contain; transform:translateZ(50px);
+  filter:drop-shadow(0 10px 20px rgba(0,0,0,0.3));
+}
+.three-d-text { margin-top:1rem; font-weight:bold; color:var(--brand-blue); text-align:center; }
+
+@media (max-width:768px){
+  .logo-title{font-size:2.5rem;}
+  .chapter{font-size:1.1rem;}
+  header{padding:4rem 1rem 1rem;}
+  .header-logo{height:60px;}
+  .heading-bar{font-size:1.3rem;padding:1.2rem 1rem;}
+  .content{padding:2.2rem;}
+  .card:hover{transform:translateY(-10px) scale(1.03);}
+  .pasta-quiz{grid-template-columns:repeat(2,1fr);gap:1rem;}
+  .flip-container{height:180px;}
+  .pasta-option img{width:100px;height:100px;}
+  .pasta-option span{font-size:.9rem;}
+  .back h4{font-size:1rem;}
+  .back p{font-size:.8rem;}
+  .three-d-container { width:250px; height:250px; }
+  .three-d-img { width:150px; height:150px; }
+}
