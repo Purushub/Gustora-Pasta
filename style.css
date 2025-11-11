@@ -28,7 +28,7 @@ header {
   position:relative; text-align:center; padding:6rem 2rem 2rem; background:transparent; z-index:2;
 }
 .header-logo {
-  display:block; margin:0 auto 1rem; width:auto; height:80px;
+  display:block; margin:0 auto 1rem; width:auto; height:220px;
   filter:drop-shadow(0 4px 12px var(--shadow)); transition:transform .3s ease;
 }
 .header-logo:hover { transform:scale(1.05); }
